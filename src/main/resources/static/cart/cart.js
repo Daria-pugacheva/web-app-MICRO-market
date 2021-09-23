@@ -1,9 +1,9 @@
-angular.module('market-front').controller('cartController', function ($scope, $http, $location) {
+angular.module('market-front').controller('cartController', function ($scope, $http, $location, $localStorage) {
     const contextPath = 'http://localhost:8189/market/';
 
     $scope.loadCart = function () {
         $http ({
-            url: contextPath + 'api/v1/cart',
+            url: contextPath + 'api/v1/cart/' + $localStorage.webMarketGuestCartId,
             method: 'GET'
         }).then(function (response) {
             console.log(response);
@@ -13,7 +13,7 @@ angular.module('market-front').controller('cartController', function ($scope, $h
 
     $scope.incrementItem = function (productId) {
         $http ({
-            url: contextPath + 'api/v1/cart/add/' + productId,
+            url: contextPath + 'api/v1/cart/' + $localStorage.webMarketGuestCartId + '/add/' + productId,
             method: 'GET'
         }).then(function (response) {
             $scope.loadCart();
@@ -22,7 +22,7 @@ angular.module('market-front').controller('cartController', function ($scope, $h
 
     $scope.decrementItem = function (productId) {
         $http ({
-            url: contextPath + 'api/v1/cart/decrement/' + productId,
+            url: contextPath + 'api/v1/cart/' + $localStorage.webMarketGuestCartId + '/decrement/' + productId,
             method: 'GET'
         }).then(function (response) {
             $scope.loadCart();
@@ -31,7 +31,7 @@ angular.module('market-front').controller('cartController', function ($scope, $h
 
     $scope.removeItem = function (productId) {
         $http ({
-            url: contextPath + 'api/v1/cart/remove/' + productId,
+            url: contextPath + 'api/v1/cart/' + $localStorage.webMarketGuestCartId + '/remove/' + productId,
             method: 'GET'
         }).then(function (response) {
             $scope.loadCart();
@@ -46,10 +46,6 @@ angular.module('market-front').controller('cartController', function ($scope, $h
         alert("Для оформления заказа необходимо войти в учетную запись");
     }
 
-
-
-
     $scope.loadCart();
-
 
 });

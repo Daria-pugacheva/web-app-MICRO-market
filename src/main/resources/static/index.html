@@ -32,6 +32,9 @@
                         <a class="nav-link" href="#!/cart" style="...">Корзина</a>
                     </li>
                     <li class="nav-item" ng-show="isUserLoggedIn()">
+                        <a class="nav-link" href="#!/orders" style="...">Заказы</a>
+                    </li>
+                    <li class="nav-item" ng-show="isUserLoggedIn()">
                         <a class="nav-link" href="#!/create_product" style="...">Создать товар (служебная)</a>
                     </li>
                     <li class="nav-item" ng-show="!isUserLoggedIn()">
@@ -62,6 +65,7 @@
     <script src="index.js"></script>
     <script src="store/store.js"></script>
     <script src="cart/cart.js"></script>
+    <script src="orders/orders.js"></script>
     <script src="order_confirmation/order_confirmation.js"></script>
     <script src="welcome/welcome.js"></script>
     <script src="edit_product/edit_product.js"></script>

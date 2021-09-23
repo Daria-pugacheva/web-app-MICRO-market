@@ -1,0 +1,23 @@
+<div>
+    <p></p>
+    <h3>Заказы</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <td>Заказ</td>
+<!--            <td>Количество</td>-->
+<!--            <td>Цена</td>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat='ord in orders'>
+            <td>{{ord.items}}</td>
+<!--        <tr ng-repeat='i in ord.items'>-->
+<!--            <td>{{i.productTitle}}</td>-->
+<!--            <td>{{i.quantity}}</td>-->
+<!--            <td>{{i.pricePerProduct + ' х ' + i.quantity + ' = ' + i.price}}</td>-->
+        </tr>
+        </tbody>
+    </table>
+
+</div>

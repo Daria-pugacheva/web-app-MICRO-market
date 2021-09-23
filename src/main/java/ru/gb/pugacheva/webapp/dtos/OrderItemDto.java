@@ -1,9 +1,12 @@
 package ru.gb.pugacheva.webapp.dtos;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import ru.gb.pugacheva.webapp.model.OrderItem;
 import ru.gb.pugacheva.webapp.model.Product;
 
 @Data
+@NoArgsConstructor
 public class OrderItemDto {
     private Long productId;
     private String productTitle;
@@ -17,6 +20,15 @@ public class OrderItemDto {
         this.quantity = 1;
         this.pricePerProduct = product.getPrice();
         this.price = product.getPrice();
+    }
+
+    public OrderItemDto(OrderItem orderItem) {
+        this.productId = orderItem.getProduct().getId();
+        this.productTitle = orderItem.getProduct().getTitle();
+        this.quantity = orderItem.getQuantity();
+        this.price = orderItem.getPrice();
+        this.pricePerProduct = orderItem.getPricePerProduct();
+
     }
 
     public void changeQuantity(int delta){

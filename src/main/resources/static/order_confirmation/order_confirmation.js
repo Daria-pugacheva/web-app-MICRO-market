@@ -3,7 +3,7 @@ angular.module('market-front').controller('orderConfirmationController', functio
 
     $scope.loadCart = function () {
         $http ({
-            url: contextPath + 'api/v1/cart',
+            url: contextPath + 'api/v1/0/cart',
             method: 'GET'
         }).then(function (response) {
             console.log(response);
