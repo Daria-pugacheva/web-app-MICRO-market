@@ -8,7 +8,10 @@ angular.module('market-front').controller('storeController', function ($scope, $
             url: contextPath + 'api/v1/products',
             method: 'GET',
             params: {
-                p: pageIndex
+                p: pageIndex,
+                title: $scope.filter ? $scope.filter.title : null,
+                min_price: $scope.filter ? $scope.filter.min_price : null,
+                max_price: $scope.filter ? $scope.filter.max_price : null
             }
         }).then(function (response) {
             console.log(response);

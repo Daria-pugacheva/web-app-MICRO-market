@@ -26,13 +26,13 @@
                 templateUrl: 'edit_product/edit_product.html',
                 controller: 'editProductController'
             })
-            .when('/create_product', {
-                templateUrl: 'create_product/create_product.html',
-                controller: 'createProductController'
+            .when('/admin', {
+                templateUrl: 'admin/admin.html',
+                controller: 'adminController'
             })
-            .when('/orders', {
-                templateUrl: 'orders/orders.html',
-                controller: 'ordersController'
+            .when('/profile', {
+                templateUrl: 'profile/profile.html',
+                controller: 'profileController'
             })
             .otherwise({
                 redirectTo: '/'
@@ -82,6 +82,7 @@ angular.module('market-front').controller('indexController', function ($rootScop
         if ($scope.user.password) {
             $scope.user.password = null;
         }
+        $location.path('/');
     };
 
     $scope.clearUser = function () {

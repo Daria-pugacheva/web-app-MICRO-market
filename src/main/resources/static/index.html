@@ -32,11 +32,11 @@
                         <a class="nav-link" href="#!/cart" style="...">Корзина</a>
                     </li>
                     <li class="nav-item" ng-show="isUserLoggedIn()">
-                        <a class="nav-link" href="#!/orders" style="...">Заказы</a>
+                        <a class="nav-link" href="#!/profile" style="...">Профиль</a>
                     </li>
-                    <li class="nav-item" ng-show="isUserLoggedIn()">
-                        <a class="nav-link" href="#!/create_product" style="...">Создать товар (служебная)</a>
-                    </li>
+<!--                    <li class="nav-item" ng-show="isUserLoggedIn()">-->
+<!--                        <a class="nav-link" href="#!/create_product" style="...">Создать товар (служебная)</a>-->
+<!--                    </li>-->
                     <li class="nav-item" ng-show="!isUserLoggedIn()">
                         <form class="align-middle" ng-submit="tryToAuth()">
                             <div class="input-group input-group-sm" style="padding: 4px;">
@@ -65,11 +65,11 @@
     <script src="index.js"></script>
     <script src="store/store.js"></script>
     <script src="cart/cart.js"></script>
-    <script src="orders/orders.js"></script>
+    <script src="profile/profile.js"></script>
     <script src="order_confirmation/order_confirmation.js"></script>
     <script src="welcome/welcome.js"></script>
     <script src="edit_product/edit_product.js"></script>
-    <script src="create_product/create_product.js"></script>
+    <script src="admin/admin.js"></script>
 
 </div>
 </body>

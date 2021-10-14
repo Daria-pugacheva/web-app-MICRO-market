@@ -1,9 +1,9 @@
-angular.module('market-front').controller('orderConfirmationController', function ($scope, $http, $location) {
+angular.module('market-front').controller('orderConfirmationController', function ($scope, $http, $location, $localStorage) {
     const contextPath = 'http://localhost:8189/market/';
 
     $scope.loadCart = function () {
         $http ({
-            url: contextPath + 'api/v1/0/cart',
+            url: contextPath + 'api/v1/cart/' + $localStorage.webMarketGuestCartId,
             method: 'GET'
         }).then(function (response) {
             console.log(response);
