@@ -13,14 +13,6 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL94Dialect
-  h2:
-    console:
-      enabled: true
-      settings:
-        web-allow-others: false
-jwt:
-  secret: djfljadslfjlasdf
-  lifetime: 36000000
 integration:
   cart-service:
     url: http://localhost:8191/market-cart

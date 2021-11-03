@@ -48,7 +48,7 @@ values ('Bread', 25, 1),
 create table users
 (
     id         bigserial primary key,
-    username   varchar(30) not null,
+    username   varchar(30) not null unique,
     first_name   varchar(80) not null,
     last_name   varchar(80) not null,
     password   varchar(80) not null,
@@ -87,13 +87,16 @@ values (1, 1),
 create table orders
 (
     id         bigserial primary key,
-    user_id    bigint references users (id),
+    username   varchar(255) references users (username),
     address    varchar(255),
     phone      varchar(255),
     price      integer,
     created_at timestamp default current_timestamp,
     updated_at timestamp default current_timestamp
 );
+
+insert into orders (username, address, phone, price)
+values ('user', '1111', '1111', 100);
 
 create table order_items
 (

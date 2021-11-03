@@ -34,9 +34,8 @@ public class Order {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column
+    private String username;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List <OrderItem> items;
