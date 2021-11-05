@@ -9,7 +9,7 @@ import ru.gb.pugacheva.webapp.auth.services.UserService;
 
 @RestController
 @RequestMapping("/api/v1/users")
-@CrossOrigin("*")
+//@CrossOrigin("*")
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;

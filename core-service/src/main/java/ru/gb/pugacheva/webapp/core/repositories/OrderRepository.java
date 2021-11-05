@@ -9,6 +9,7 @@ import ru.gb.pugacheva.webapp.core.model.Product;
 
 import javax.persistence.NamedEntityGraph;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface OrderRepository extends JpaRepository <Order, Long> {
@@ -16,4 +17,6 @@ public interface OrderRepository extends JpaRepository <Order, Long> {
     @Query("select o from Order o where o.username = :username")
     @EntityGraph(value = "orders.for-front")
     List<Order> findAllByUsername (String username);
+
+    Optional <Order> findOneByIdAndUsername (Long id, String username);
 }

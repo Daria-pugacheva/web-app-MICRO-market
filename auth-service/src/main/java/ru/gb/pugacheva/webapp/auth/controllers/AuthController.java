@@ -19,7 +19,7 @@ import ru.gb.pugacheva.webapp.auth.utils.JwtTokenUtil;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin("*")
+//@CrossOrigin("*")
 public class AuthController {
     private final UserService userService;
     private final JwtTokenUtil jwtTokenUtil;

@@ -27,4 +27,3 @@ public class JwtUtil {
         return this.isTokenExpired(token);
     }
 }
-

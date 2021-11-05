@@ -22,6 +22,10 @@
                 templateUrl: 'order_confirmation/order_confirmation.html',
                 controller: 'orderConfirmationController'
             })
+            .when('/order_pay/:orderId', {
+                templateUrl: 'order_pay/order_pay.html',
+                controller: 'orderPayController'
+            })
             .when('/edit_product/:productId', {
                 templateUrl: 'edit_product/edit_product.html',
                 controller: 'editProductController'

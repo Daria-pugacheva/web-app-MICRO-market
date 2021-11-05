@@ -17,7 +17,8 @@ angular.module('market-front').controller('orderConfirmationController', functio
             data: $scope.orderDetails
         }).then(function (response) {
             alert("Ваш заказ успешно сформирован");
-            $location.path("/");
+            var orderId = response.data.value;
+            $location.path("/order_pay/" + orderId);
         });
     };
 
