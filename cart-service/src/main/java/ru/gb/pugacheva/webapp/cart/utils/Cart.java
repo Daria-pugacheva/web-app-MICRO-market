@@ -3,6 +3,8 @@ package ru.gb.pugacheva.webapp.cart.utils;
 import lombok.Data;
 import ru.gb.pugacheva.webapp.api.dtos.OrderItemDto;
 import ru.gb.pugacheva.webapp.api.dtos.ProductDto;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.List;
 @Data
 public class Cart {
     private List<OrderItemDto> items;
-    private int totalPrice;
+    private BigDecimal totalPrice;
 
     public Cart() {
         this.items = new ArrayList<>();
@@ -50,12 +52,12 @@ public class Cart {
 
     public void clear(){
         items.clear();
-        totalPrice = 0;
+        totalPrice = null;
     }
     private void recalculate (){
-        totalPrice = 0;
+        totalPrice = BigDecimal.ZERO;
         for (OrderItemDto i: items) {
-            totalPrice += i.getPrice();
+            totalPrice = totalPrice.add(i.getPrice());
         }
     }
 

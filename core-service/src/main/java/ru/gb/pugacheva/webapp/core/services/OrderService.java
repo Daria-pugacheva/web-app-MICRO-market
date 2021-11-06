@@ -34,6 +34,7 @@ public class OrderService {
         order.setPrice(cart.getTotalPrice());
         order.setAddress(orderDetailsDto.getAddress());
         order.setPhone(orderDetailsDto.getPhone());
+        order.setStatus("Не оплачен");
         List<OrderItem> items = new ArrayList<>();
         for (OrderItemDto i : cart.getItems()) {
             OrderItem orderItem = new OrderItem();
@@ -63,6 +64,11 @@ public class OrderService {
 
     public List<Order> findAllByUsername(String username) {
         return orderRepository.findAllByUsername(username);
+    }
+
+    @Transactional
+    public void setPaidOrderStatus(Long id){
+        orderRepository.setPaidOrderStatus (id);
     }
 
 

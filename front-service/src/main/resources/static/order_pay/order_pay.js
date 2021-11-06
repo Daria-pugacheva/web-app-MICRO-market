@@ -1,9 +1,9 @@
-angular.module('market-front').controller('orderPayController', function ($scope, $http, $location,$routeParams, $localStorage) {
+angular.module('market-front').controller('orderPayController', function ($scope, $http, $location, $localStorage, $routeParams) {
 
     $scope.loadOrder = function () {
-        $http ({
+        $http({
             url: 'http://localhost:5555/core/api/v1/orders/' + $routeParams.orderId,
-            method: 'GET',
+            method: 'GET'
         }).then(function (response) {
             $scope.order = response.data;
             $scope.renderPaymentButtons();
@@ -31,7 +31,10 @@ angular.module('market-front').controller('orderPayController', function ($scope
                     }
                 }).then(function(response) {
                     response.text().then(msg => alert(msg));
-
+                    $location.path('/');
+                    $http.get('http://localhost:5555/core/api/v1/orders/status/'+ $routeParams.orderId)
+                            .then(function (response){
+                             });
                 });
             },
 
@@ -47,5 +50,9 @@ angular.module('market-front').controller('orderPayController', function ($scope
 
     $scope.loadOrder();
 
-
 });
+
+// console.log("ОКАЗАЛИСЬ НА СТРОКЕ ПЕРЕД СМЕНОЙ СТАТУСА ЗАКАЗА")
+// $http.get('http://localhost:5555/core/api/v1/orders/status/'+ $routeParams.orderId)
+//     .then(function (response){
+//     });

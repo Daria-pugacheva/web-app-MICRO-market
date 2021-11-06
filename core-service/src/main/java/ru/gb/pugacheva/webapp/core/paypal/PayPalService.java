@@ -1,5 +1,6 @@
 package ru.gb.pugacheva.webapp.core.paypal;
 
+
 import com.paypal.orders.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -34,12 +35,12 @@ public class PayPalService {
         PurchaseUnitRequest purchaseUnitRequest = new PurchaseUnitRequest()
                 .referenceId(orderId.toString())
                 .description("Web App Market Order")
-                .amountWithBreakdown(new AmountWithBreakdown().currencyCode("RUB").value(String.valueOf(order.getPrice()))
-                        .amountBreakdown(new AmountBreakdown().itemTotal(new Money().currencyCode("RUB").value(String.valueOf(order.getPrice())))))
+                .amountWithBreakdown(new AmountWithBreakdown().currencyCode("USD").value(String.valueOf(order.getPrice()))
+                        .amountBreakdown(new AmountBreakdown().itemTotal(new Money().currencyCode("USD").value(String.valueOf(order.getPrice())))))
                 .items(order.getItems().stream()
                         .map(orderItem -> new Item()
                                 .name(orderItem.getProduct().getTitle())
-                                .unitAmount(new Money().currencyCode("RUB").value(String.valueOf(order.getPrice())))
+                                .unitAmount(new Money().currencyCode("USD").value(String.valueOf(order.getPrice())))
                                 .quantity(String.valueOf(orderItem.getQuantity())))
                         .collect(Collectors.toList()))
                 .shippingDetail(new ShippingDetail().name(new Name().fullName(order.getUsername()))
@@ -50,3 +51,56 @@ public class PayPalService {
         return orderRequest;
     }
 }
+
+//import com.paypal.orders.*;
+//import lombok.RequiredArgsConstructor;
+//import org.springframework.stereotype.Service;
+//import org.springframework.transaction.annotation.Transactional;
+//import ru.gb.pugacheva.webapp.api.exceptions.ResourceNotFoundException;
+//import ru.gb.pugacheva.webapp.core.model.Order;
+//import ru.gb.pugacheva.webapp.core.services.OrderService;
+//
+//import java.util.ArrayList;
+//import java.util.List;
+//import java.util.stream.Collectors;
+//
+//@Service
+//@RequiredArgsConstructor
+//public class PayPalService {
+//    private final OrderService orderService;
+//
+//    @Transactional
+//    public OrderRequest createOrderRequest(Long orderId) {
+//        Order order = orderService.findById(orderId).orElseThrow(() -> new ResourceNotFoundException("Order not found"));
+//
+//        OrderRequest orderRequest = new OrderRequest();
+//        orderRequest.checkoutPaymentIntent("CAPTURE");
+//
+//        ApplicationContext applicationContext = new ApplicationContext()
+//                .brandName("Web App Market")
+//                .landingPage("BILLING")
+//                .shippingPreference("SET_PROVIDED_ADDRESS");
+//        orderRequest.applicationContext(applicationContext);
+//
+//        List<PurchaseUnitRequest> purchaseUnitRequests = new ArrayList<>();
+//        PurchaseUnitRequest purchaseUnitRequest = new PurchaseUnitRequest()
+//                .referenceId(orderId.toString())
+//                .description("Web App Market Order")
+//                .amountWithBreakdown(new AmountWithBreakdown().currencyCode("RUB").value(String.valueOf(order.getPrice()))
+//                        .amountBreakdown(new AmountBreakdown().itemTotal(new Money().currencyCode("RUB").value(String.valueOf(order.getPrice())))))
+//                .items(order.getItems().stream()
+//                        .map(orderItem -> new Item()
+//                                .name(orderItem.getProduct().getTitle())
+//                                .unitAmount(new Money().currencyCode("RUB").value(String.valueOf(order.getPrice())))
+//                                .quantity(String.valueOf(orderItem.getQuantity())))
+//                        .collect(Collectors.toList()))
+//                .shippingDetail(new ShippingDetail().name(new Name().fullName(order.getUsername()))
+//                        .addressPortable(new AddressPortable().addressLine1("12 First St").addressLine2("26")
+//                                .adminArea2("Moscow").adminArea1("MOW").postalCode("126147").countryCode("RU")));
+//        purchaseUnitRequests.add(purchaseUnitRequest);
+//        orderRequest.purchaseUnits(purchaseUnitRequests);
+//        return orderRequest;
+//    }
+//}
+
+//String.valueOf(order.getPrice())

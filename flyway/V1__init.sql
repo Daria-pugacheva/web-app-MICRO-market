@@ -12,7 +12,7 @@ create table products
 (
     id          bigserial primary key,
     title       varchar(255),
-    price       int,
+    price       numeric (8, 2) not null,
     category_id bigint references categories (id),
     created_at  timestamp default current_timestamp,
     updated_at  timestamp default current_timestamp
@@ -90,13 +90,14 @@ create table orders
     username   varchar(255) references users (username),
     address    varchar(255),
     phone      varchar(255),
-    price      integer,
+    price      numeric (8, 2) not null,
+    status      varchar(64),
     created_at timestamp default current_timestamp,
     updated_at timestamp default current_timestamp
 );
 
-insert into orders (username, address, phone, price)
-values ('user', '1111', '1111', 100);
+insert into orders (username, address, phone, price, status)
+values ('user', '1111', '1111', 100, 'Не оплачен');
 
 create table order_items
 (
@@ -104,8 +105,8 @@ create table order_items
     order_id          bigint references orders (id),
     product_id        bigint references products (id),
     quantity          integer,
-    price_per_product integer,
-    price             integer,
+    price_per_product numeric (8, 2) not null,
+    price             numeric (8, 2) not null,
     created_at        timestamp default current_timestamp,
     updated_at        timestamp default current_timestamp
 );

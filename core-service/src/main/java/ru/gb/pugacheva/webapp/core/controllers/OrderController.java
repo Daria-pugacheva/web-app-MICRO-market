@@ -36,4 +36,9 @@ public class OrderController {
         return orderService.findDtoByIdAndUsername(id, username).get();
     }
 
+    @GetMapping("/status/{id}")
+    public void changeOrderStatus (@PathVariable Long id){
+        orderService.setPaidOrderStatus(id);
+    }
+
 }
