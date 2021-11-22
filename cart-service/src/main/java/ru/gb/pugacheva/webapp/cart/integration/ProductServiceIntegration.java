@@ -20,9 +20,7 @@ public class ProductServiceIntegration {
                .block();
        return product;
     }
-
 }
-
 
 ////Старый вариант с RestTemplate
 //    private final RestTemplate restTemplate;
@@ -31,6 +29,6 @@ public class ProductServiceIntegration {
 //    private String productServiceUrl;
 //
 //    public ProductDto getProductById (Long productId) {
-//        return restTemplate.getForObject(productServiceUrl +"/api/v1/products/" + productId, ProductDto.class);
-//
+//        return restTemplate.getForObject(productServiceUrl +"/api/v1/products/"
+//        + productId, ProductDto.class);
 //    }

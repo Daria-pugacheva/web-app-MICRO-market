@@ -39,10 +39,8 @@ spring:
             - StripPrefix=1
             - PrefixPath=/market-auth
             - JwtAuthFilter
-
 jwt:
   secret: oifh4309f8h324098fh4398gh8h*&TG*#&Gg97rgff98gf983h4f983h487g*&^F&Fu3r
-
 #logging: // расширение уровней логирования (при необходимости можно настроить, чтобы смотреть, где ошибки)
 #  level:
 #    reactor:
